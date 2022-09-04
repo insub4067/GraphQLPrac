@@ -1,5 +1,5 @@
 
-query Query {
+query GetAllMovies {
   allFilms {
     films {
       title

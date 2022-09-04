@@ -17,9 +17,9 @@
 		C68DE8C528C4DC5E00CA4CC8 /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = C68DE8C428C4DC5E00CA4CC8 /* ApolloSQLite */; };
 		C68DE8C728C4DC5E00CA4CC8 /* ApolloUtils in Frameworks */ = {isa = PBXBuildFile; productRef = C68DE8C628C4DC5E00CA4CC8 /* ApolloUtils */; };
 		C68DE8CB28C4DFC600CA4CC8 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = C68DE8CA28C4DFC600CA4CC8 /* schema.json */; };
-		C68DE8CE28C4DFED00CA4CC8 /* Queries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = C68DE8CD28C4DFED00CA4CC8 /* Queries.graphql */; };
-		C68DE8D128C4E15D00CA4CC8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DE8D028C4E15D00CA4CC8 /* API.swift */; };
+		C68DE8CE28C4DFED00CA4CC8 /* Query.graphql in Resources */ = {isa = PBXBuildFile; fileRef = C68DE8CD28C4DFED00CA4CC8 /* Query.graphql */; };
 		C68DE8D328C4E19E00CA4CC8 /* Apollo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DE8D228C4E19E00CA4CC8 /* Apollo.swift */; };
+		C68DE8DB28C4EE9100CA4CC8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68DE8DA28C4EE9100CA4CC8 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +29,9 @@
 		C68DE8B328C4DBF300CA4CC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C68DE8B628C4DBF300CA4CC8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C68DE8CA28C4DFC600CA4CC8 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
-		C68DE8CD28C4DFED00CA4CC8 /* Queries.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Queries.graphql; sourceTree = "<group>"; };
-		C68DE8D028C4E15D00CA4CC8 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C68DE8CD28C4DFED00CA4CC8 /* Query.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Query.graphql; sourceTree = "<group>"; };
 		C68DE8D228C4E19E00CA4CC8 /* Apollo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apollo.swift; sourceTree = "<group>"; };
+		C68DE8DA28C4EE9100CA4CC8 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +90,9 @@
 		C68DE8CC28C4DFDD00CA4CC8 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				C68DE8D028C4E15D00CA4CC8 /* API.swift */,
 				C68DE8D228C4E19E00CA4CC8 /* Apollo.swift */,
-				C68DE8CD28C4DFED00CA4CC8 /* Queries.graphql */,
+				C68DE8DA28C4EE9100CA4CC8 /* API.swift */,
+				C68DE8CD28C4DFED00CA4CC8 /* Query.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -104,7 +104,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C68DE8BA28C4DBF300CA4CC8 /* Build configuration list for PBXNativeTarget "GraphQLPrac" */;
 			buildPhases = (
-				C68DE8CF28C4E01F00CA4CC8 /* Apollo */,
+				C68DE8CF28C4E01F00CA4CC8 /* Generate Apollo GraphQL API */,
 				C68DE8A828C4DBF100CA4CC8 /* Sources */,
 				C68DE8A928C4DBF100CA4CC8 /* Frameworks */,
 				C68DE8AA28C4DBF100CA4CC8 /* Resources */,
@@ -166,7 +166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C68DE8CE28C4DFED00CA4CC8 /* Queries.graphql in Resources */,
+				C68DE8CE28C4DFED00CA4CC8 /* Query.graphql in Resources */,
 				C68DE8B728C4DBF300CA4CC8 /* Preview Assets.xcassets in Resources */,
 				C68DE8CB28C4DFC600CA4CC8 /* schema.json in Resources */,
 				C68DE8B428C4DBF300CA4CC8 /* Assets.xcassets in Resources */,
@@ -176,7 +176,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C68DE8CF28C4E01F00CA4CC8 /* Apollo */ = {
+		C68DE8CF28C4E01F00CA4CC8 /* Generate Apollo GraphQL API */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -185,7 +185,7 @@
 			);
 			inputPaths = (
 			);
-			name = Apollo;
+			name = "Generate Apollo GraphQL API";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -202,8 +202,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C68DE8B228C4DBF100CA4CC8 /* ContentView.swift in Sources */,
-				C68DE8D128C4E15D00CA4CC8 /* API.swift in Sources */,
 				C68DE8D328C4E19E00CA4CC8 /* Apollo.swift in Sources */,
+				C68DE8DB28C4EE9100CA4CC8 /* API.swift in Sources */,
 				C68DE8B028C4DBF100CA4CC8 /* GraphQLPracApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

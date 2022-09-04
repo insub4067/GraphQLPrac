@@ -4,11 +4,11 @@
 import Apollo
 import Foundation
 
-public final class QueryQuery: GraphQLQuery {
+public final class GetAllMoviesQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query Query {
+    query GetAllMovies {
       allFilms {
         __typename
         films {
@@ -33,7 +33,7 @@ public final class QueryQuery: GraphQLQuery {
     }
     """
 
-  public let operationName: String = "Query"
+  public let operationName: String = "GetAllMovies"
 
   public init() {
   }

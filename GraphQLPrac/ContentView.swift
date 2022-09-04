@@ -6,16 +6,39 @@
 //
 
 import SwiftUI
+import Apollo
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
-    }
-}
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    @State private var movies: [GetAllMoviesQuery.Data.AllFilm.Film] = []
+
+    var body: some View {
+
+        NavigationView {
+            VStack {
+                List(movies, id: \.title) { movie in
+                    Text(movie.title ?? "")
+                }
+            }
+            .navigationTitle("Starwars Movies")
+            .onAppear {
+                Network.shared.apollo.fetch(query: GetAllMoviesQuery()) {
+                    result in
+                    switch result {
+                    case .success(let graphQLResult):
+
+                        DispatchQueue.main.async {
+                            if let movies = graphQLResult.data?.allFilms?.films {
+                                movies.map { movie in
+                                    self.movies.append(movie!)
+                                }
+                            }
+                        }
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
     }
 }
