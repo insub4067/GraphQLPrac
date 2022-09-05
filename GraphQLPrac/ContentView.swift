@@ -29,9 +29,7 @@ struct ContentView: View {
 
                         DispatchQueue.main.async {
                             if let movies = graphQLResult.data?.allFilms?.films {
-                                self.movies = movies.map({ movie in
-                                    movie!
-                                })
+                                self.movies = movies.compactMap { $0 }
                             }
                         }
                     case .failure(let error):
